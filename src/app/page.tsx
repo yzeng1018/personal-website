@@ -1,42 +1,9 @@
 import Nav from "@/components/Nav";
 import Link from "next/link";
-
-type Post = {
-  slug: string;
-  title: string;
-  date: string;
-  lang?: "zh" | "en";
-};
-
-// Placeholder posts — replace with real MDX/data layer
-const recentPosts: Post[] = [
-  {
-    slug: "why-most-ai-products-fail-on-usability",
-    title: "为什么大多数 AI 产品都死在了「好用」这一关",
-    date: "2026.03",
-    lang: "zh",
-  },
-  {
-    slug: "investor-vs-pm-perspective-on-product",
-    title: "投资人看产品，和产品经理看产品，有什么不同",
-    date: "2026.02",
-    lang: "zh",
-  },
-  {
-    slug: "decision-framework-under-uncertainty",
-    title: "从 0 到 1 的产品决策框架：不确定性下的取舍逻辑",
-    date: "2026.01",
-    lang: "zh",
-  },
-  {
-    slug: "model-vs-market",
-    title: "The Model vs. The Market: Where AI PMs Go Wrong",
-    date: "2025.12",
-    lang: "en",
-  },
-];
+import { getAllPosts } from "@/lib/posts";
 
 export default function Home() {
+  const recentPosts = getAllPosts().slice(0, 4);
   return (
     <>
       <Nav />
