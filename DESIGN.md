@@ -131,3 +131,17 @@ Swap surfaces while preserving warmth — never go to pure black:
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | 2026-03-26 | Initial design system created | Established via /design-consultation. Competitive research: karpathy.ai, patrickcollison.com, leerob.com. Direction validated against independent subagent proposal — both converged on warm editorial / anti-AI-gradient aesthetic. |
+
+## Deploy Configuration (configured by /setup-deploy)
+- Platform: Vercel
+- Production URL: https://zengyan.org
+- Deploy workflow: auto-deploy on push to main (`vercel --prod` also works)
+- Project ID: prj_Kzg89XWD5Rjal6G9GWFZi8LPc7pL
+- Merge method: push to main triggers auto-deploy
+- Project type: Next.js static site (SSG)
+- Post-deploy health check: https://zengyan.org
+
+### Custom deploy hooks
+- Pre-merge: none
+- Deploy trigger: `vercel --prod` or push to main
+- Health check: `curl -sf https://zengyan.org -o /dev/null`
