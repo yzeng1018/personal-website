@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
-  title: "项目",
-  description: "曾言参与和构建的项目——以思考过程为主，不是技能矩阵。",
+  title: "Projects",
+  description:
+    "Products and markets I&rsquo;ve built — from Didi's Latin America launch to Kuaishou Brazil to Trip.com's flight business.",
 };
 
 type Project = {
@@ -15,31 +16,51 @@ type Project = {
   link?: string;
 };
 
-const projects: Project[] = [
+const work: Project[] = [
   {
-    name: "[项目名 1]",
+    name: "Trip.com — Flight Product",
     period: "2025—",
-    role: "创始人 / 产品负责人",
+    role: "Product Director · CPO, Travix",
     description:
-      "[这里写这个项目的核心思考：为什么做这件事、解决什么本质问题、你在其中的判断是什么。重点不是「用了什么技术」，而是「你做了什么决策，为什么」。]",
-    tags: ["AI", "B2B", "SaaS"],
+      "Leading flight product strategy and experience for Trip.com's overseas markets, and serving as CPO of Travix — Trip.com Group's European flight booking subsidiary. Focus on CVR, revenue per visit, and AI-native feature development. Shipped an AI check-in product that increased online check-in coverage 80% and success rate 15 points.",
+    tags: ["Travel", "AI", "Europe", "Growth"],
   },
   {
-    name: "[项目名 2]",
-    period: "2024—2025",
-    role: "产品经理",
+    name: "Kuaishou Brazil",
+    period: "2020—2025",
+    role: "Product Director · General Manager, Brazil",
     description:
-      "[同上。用叙事而非简历语言来描述。读者需要理解你的思考方式，而不是你的技能列表。]",
-    tags: ["企业软件", "工作流"],
+      "Ran the Brazil business end-to-end — product, growth, creator ecosystem, and AIGC content pipeline. Grew daily active users from 10M to 30M. Rebuilt the creator side from the ground up: submission rate went from 2% to 7%. Built two products from zero: Topick (an overseas image-text community) and Sports (a sports vertical that reached 800K DAU and $200K daily revenue in six months).",
+    tags: ["Consumer", "Brazil", "AIGC", "0→1"],
   },
   {
-    name: "[内容/播客项目]",
-    period: "2023—",
-    role: "主理人",
+    name: "Didi International",
+    period: "2014—2020",
+    role: "Algorithm Engineering · Product Operations Lead",
     description:
-      "[如果你有播客、公众号或其他内容项目，这里写它的定位和你为什么做它。]",
-    tags: ["内容", "AI产品"],
-    link: "https://your-link.com",
+      "Part of the founding team for Didi's international expansion. Built ride-hailing from zero in Brazil, Mexico, and Colombia — reaching roughly 30% market share in core markets. Worked across algorithm engineering (dynamic pricing, smart subsidy models in Scala + LibFFM) and operational scaling. Led the post-acquisition integration of 99, Brazil's incumbent ride-hailing platform, completing the systems and team merge in six months.",
+    tags: ["Ride-hailing", "Latin America", "Algorithm", "M&A"],
+  },
+];
+
+const personal: Project[] = [
+  {
+    name: "AI Travel Agent",
+    period: "2024",
+    role: "Solo builder",
+    description:
+      "Multi-turn conversational travel planner. Takes a user's preferences — origin, destination, dates, budget, travel style — and generates a full itinerary. Integrates flight search APIs for end-to-end booking. LLM-driven attraction recommendations with real-time price and availability.",
+    tags: ["LLM", "Travel", "Next.js"],
+    link: "https://github.com/yzeng1018/trip-agent",
+  },
+  {
+    name: "Stock Anomaly Monitor",
+    period: "2024",
+    role: "Solo builder",
+    description:
+      "Python + GitHub Actions pipeline that scans A-share anomalies on a schedule, pulls financial news from Seeking Alpha, and runs multi-angle LLM analysis. Pushes alerts to WeChat Work.",
+    tags: ["Python", "LLM", "Finance"],
+    link: "https://github.com/yzeng1018/stock-monitor",
   },
 ];
 
@@ -49,48 +70,30 @@ export default function ProjectsPage() {
       <Nav />
       <main className="page-main">
         <header className="page-header">
-          <h1 className="page-title">项目</h1>
+          <h1 className="page-title">Projects</h1>
           <p className="page-desc">
-            我参与和构建的事情。重点是思考过程，不是技能清单。
+            Work and side projects. The focus is on decisions made, not
+            technologies used.
           </p>
         </header>
 
-        <ul className="projects-list">
-          {projects.map((project) => (
-            <li key={project.name} className="project-item">
-              <div className="project-top">
-                <div>
-                  <span className="project-name">
-                    {project.link ? (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-name-link"
-                      >
-                        {project.name} ↗
-                      </a>
-                    ) : (
-                      project.name
-                    )}
-                  </span>
-                  <span className="project-role">{project.role}</span>
-                </div>
-                <span className="project-period">{project.period}</span>
-              </div>
+        <section className="projects-section">
+          <p className="section-label">Work</p>
+          <ul className="projects-list">
+            {work.map((project) => (
+              <ProjectItem key={project.name} project={project} />
+            ))}
+          </ul>
+        </section>
 
-              <p className="project-desc">{project.description}</p>
-
-              <div className="project-tags">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="tag">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </li>
-          ))}
-        </ul>
+        <section className="projects-section" style={{ marginTop: "56px" }}>
+          <p className="section-label">Personal builds</p>
+          <ul className="projects-list">
+            {personal.map((project) => (
+              <ProjectItem key={project.name} project={project} />
+            ))}
+          </ul>
+        </section>
       </main>
 
       <style>{`
@@ -122,6 +125,15 @@ export default function ProjectsPage() {
           margin: 0;
         }
 
+        .section-label {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--muted);
+          margin-bottom: 0;
+        }
+
         .projects-list {
           list-style: none;
           margin: 0;
@@ -129,7 +141,7 @@ export default function ProjectsPage() {
         }
 
         .project-item {
-          padding: 32px 0;
+          padding: 28px 0;
           border-top: 1px solid var(--border);
         }
 
@@ -142,16 +154,17 @@ export default function ProjectsPage() {
           align-items: flex-start;
           justify-content: space-between;
           gap: 16px;
-          margin-bottom: 12px;
+          margin-bottom: 10px;
         }
 
         .project-name {
           font-family: var(--font-serif);
-          font-size: 20px;
+          font-size: 19px;
           letter-spacing: -0.01em;
           color: var(--text);
           display: block;
-          margin-bottom: 4px;
+          margin-bottom: 2px;
+          line-height: 1.3;
         }
 
         .project-name-link {
@@ -184,21 +197,21 @@ export default function ProjectsPage() {
         .project-desc {
           font-family: var(--font-sans);
           font-size: 15px;
-          line-height: 1.7;
+          line-height: 1.72;
           color: var(--text);
-          margin: 0 0 16px;
+          margin: 0 0 14px;
         }
 
         .project-tags {
           display: flex;
-          gap: 8px;
+          gap: 6px;
           flex-wrap: wrap;
         }
 
         .tag {
           font-family: var(--font-mono);
-          font-size: 11px;
-          padding: 3px 8px;
+          font-size: 10px;
+          padding: 2px 7px;
           border-radius: 3px;
           border: 1px solid var(--border);
           color: var(--muted);
@@ -206,5 +219,42 @@ export default function ProjectsPage() {
         }
       `}</style>
     </>
+  );
+}
+
+function ProjectItem({ project }: { project: Project }) {
+  return (
+    <li className="project-item">
+      <div className="project-top">
+        <div>
+          <span className="project-name">
+            {project.link ? (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-name-link"
+              >
+                {project.name} ↗
+              </a>
+            ) : (
+              project.name
+            )}
+          </span>
+          <span className="project-role">{project.role}</span>
+        </div>
+        <span className="project-period">{project.period}</span>
+      </div>
+
+      <p className="project-desc">{project.description}</p>
+
+      <div className="project-tags">
+        {project.tags.map((tag) => (
+          <span key={tag} className="tag">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </li>
   );
 }

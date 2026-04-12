@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Plus_Jakarta_Sans } from "next/font/google";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -19,23 +20,23 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "曾言 / Zeng Yan",
-    template: "%s — 曾言 / Zeng Yan",
+    default: "Samuel Zeng",
+    template: "%s — Samuel Zeng",
   },
   description:
-    "AI 产品经理，也懂商业。我在思考 AI 如何重构产品、组织和市场的边界。",
+    "Product Director at Trip.com Group. Math PhD. I build AI-native consumer products at scale.",
   openGraph: {
-    title: "曾言 / Zeng Yan",
+    title: "Samuel Zeng",
     description:
-      "AI 产品经理，也懂商业。我在思考 AI 如何重构产品、组织和市场的边界。",
+      "Product Director at Trip.com Group. Math PhD. I build AI-native consumer products at scale.",
     type: "website",
-    locale: "zh_CN",
+    locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: "曾言 / Zeng Yan",
+    title: "Samuel Zeng",
     description:
-      "AI 产品经理，也懂商业。我在思考 AI 如何重构产品、组织和市场的边界。",
+      "Product Director at Trip.com Group. Math PhD. I build AI-native consumer products at scale.",
   },
 };
 
@@ -46,10 +47,15 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="zh"
+      lang="en"
       className={`${instrumentSerif.variable} ${plusJakartaSans.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <div style={{ minHeight: "100dvh", display: "flex", flexDirection: "column" }}>
+          {children}
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

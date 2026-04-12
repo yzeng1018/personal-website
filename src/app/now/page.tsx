@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
-  title: "现在",
-  description: "曾言当前在做什么、读什么、思考什么。",
+  title: "Now",
+  description: "What Samuel Zeng is working on, reading, and thinking about right now.",
 };
 
 export default function NowPage() {
@@ -12,41 +12,57 @@ export default function NowPage() {
       <Nav />
       <main className="page-main">
         <header className="page-header">
-          <h1 className="page-title">现在</h1>
-          <p className="page-meta">更新于 2026 年 3 月</p>
+          <h1 className="page-title">Now</h1>
+          <p className="page-meta">Updated April 2026</p>
         </header>
 
         <div className="now-content prose">
-          <h2>在做的事</h2>
+          <h2>Work</h2>
           <p>
-            [在这里写你当前的主要项目和工作重心。这部分保持动态更新，让读者感受到一个活跃的思考者。]
+            At Trip.com Group, leading flight product for the overseas market and
+            serving as CPO of Travix — the European flight booking business.
+            Current focus: AI-native product transformation, specifically applying
+            LLM and strategy models to the booking funnel to improve conversion
+            and per-user revenue.
           </p>
 
-          <h2>在读的书</h2>
+          <h2>Building</h2>
+          <p>
+            Continuing to build AI applications on the side. The{" "}
+            <a
+              href="https://github.com/yzeng1018/trip-agent"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              AI travel agent
+            </a>{" "}
+            is live. Working on improving its itinerary generation and flight
+            booking integration.
+          </p>
+
+          <h2>Reading</h2>
           <ul>
             <li>
-              <em>Poor Charlie&apos;s Almanack</em> — Charlie Munger
+              <em>Poor Charlie&rsquo;s Almanack</em> — Charlie Munger
             </li>
             <li>
               <em>Thinking in Systems</em> — Donella Meadows
             </li>
-            <li>[你当前在读的书]</li>
           </ul>
 
-          <h2>在思考的问题</h2>
+          <h2>Thinking about</h2>
           <p>
-            [一两个你最近反复思考的问题或主题。这是 &ldquo;Now&rdquo; 页面最有价值的部分——展示思考过程，而不仅仅是行动清单。]
+            What the right interface for AI-native travel booking actually looks
+            like. Conversational interfaces feel obvious but may not be the
+            endgame — the right model might be closer to a portfolio manager
+            working on your behalf than a chatbot you query.
           </p>
 
-          <h2>联系我</h2>
+          <h2>Get in touch</h2>
           <p>
-            如果你也在思考类似的问题，欢迎通过{" "}
-            <a href="mailto:your@email.com">邮件</a>
-            {" "}或{" "}
-            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer">
-              Twitter
-            </a>{" "}
-            联系我。
+            If you&rsquo;re thinking about similar problems, feel free to reach
+            out at{" "}
+            <a href="mailto:samuel295@163.com">samuel295@163.com</a>.
           </p>
         </div>
       </main>

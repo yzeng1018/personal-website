@@ -13,30 +13,37 @@ export default function Home() {
           <h1 className="hero-name">
             <span className="hero-name-zh">曾言</span>
             {" / "}
-            <span className="hero-name-en">Zeng Yan</span>
+            <span className="hero-name-en">Samuel Zeng</span>
           </h1>
 
           <p className="hero-bio">
-            AI 产品经理，也懂商业。
-            <br />
-            我在思考{" "}
-            <Link href="/writing" className="hero-link">
-              AI 如何重构产品、组织和市场的边界
-            </Link>
-            。
+            Product Director. Math PhD. I&rsquo;ve spent 10+ years building
+            consumer products at scale — ride-hailing in Latin America,
+            short video in Brazil, flight booking across Europe and China.
           </p>
 
           <p className="hero-bio" style={{ marginTop: "12px" }}>
-            目前在构建{" "}
-            <Link href="/projects" className="hero-link">
-              [项目名]
+            I think in systems. Math trained me to find the simplest model
+            that explains the most.{" "}
+            <Link href="/writing" className="hero-link">
+              Products are just models with users.
             </Link>
-            ，同时写关于 AI 产品方法论和商业判断的文章。
           </p>
 
           <div className="hero-now">
             <span className="now-dot" aria-hidden="true" />
-            <span>当前关注：用 AI 重建企业软件的工作流层</span>
+            <span>
+              Now: CPO of{" "}
+              <a
+                href="https://www.travix.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-link"
+              >
+                Travix
+              </a>
+              {" "}(Trip.com Group), leading AI-native flight booking in Europe
+            </span>
           </div>
         </section>
 
@@ -45,25 +52,31 @@ export default function Home() {
 
         {/* Recent Writing */}
         <section className="writing-section">
-          <p className="section-label">最新文章</p>
+          <p className="section-label">Recent Writing</p>
 
-          <ul className="writing-list">
-            {recentPosts.map((post) => (
-              <li key={post.slug} className="writing-item">
-                <Link
-                  href={`/writing/${post.slug}`}
-                  className="writing-title"
-                >
-                  {post.title}
-                </Link>
-                <span className="writing-date">{post.date}</span>
-              </li>
-            ))}
-          </ul>
+          {recentPosts.length > 0 ? (
+            <ul className="writing-list">
+              {recentPosts.map((post) => (
+                <li key={post.slug} className="writing-item">
+                  <Link
+                    href={`/writing/${post.slug}`}
+                    className="writing-title"
+                  >
+                    {post.title}
+                  </Link>
+                  <span className="writing-date">{post.date}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p style={{ color: "var(--muted)", fontSize: "14px", fontFamily: "var(--font-mono)" }}>
+              Essays coming soon.
+            </p>
+          )}
 
           <div className="writing-all-link">
             <Link href="/writing" className="view-all">
-              所有文章 →
+              All writing →
             </Link>
           </div>
         </section>
@@ -125,12 +138,17 @@ export default function Home() {
           letter-spacing: 0.02em;
         }
 
+        @keyframes pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(0.75); }
+        }
         .now-dot {
           width: 6px;
           height: 6px;
           border-radius: 50%;
           background-color: var(--accent);
           flex-shrink: 0;
+          animation: pulse 2.4s ease-in-out infinite;
         }
 
         /* Divider */
@@ -141,8 +159,6 @@ export default function Home() {
         }
 
         /* Writing */
-        .writing-section {}
-
         .section-label {
           font-family: var(--font-mono);
           font-size: 11px;

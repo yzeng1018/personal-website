@@ -65,7 +65,7 @@ export function getPostMeta(slug: string): PostMeta | null {
     lang: fm.lang ?? "zh",
     tags: fm.tags ?? [],
     draft: fm.draft ?? false,
-    readingTime: `${Math.ceil(stats.minutes)} 分钟`,
+    readingTime: `${Math.ceil(stats.minutes)} min read`,
   };
 }
 
@@ -88,7 +88,7 @@ export function getPost(slug: string): Post | null {
     lang: fm.lang ?? "zh",
     tags: fm.tags ?? [],
     draft: fm.draft ?? false,
-    readingTime: `${Math.ceil(stats.minutes)} 分钟`,
+    readingTime: `${Math.ceil(stats.minutes)} min read`,
     content,
   };
 }

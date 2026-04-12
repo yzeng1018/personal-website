@@ -4,8 +4,8 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "写作",
-  description: "AI 产品、商业判断和系统思考相关的文章。",
+  title: "Writing",
+  description: "Essays on AI products, business judgment, and systems thinking.",
 };
 
 export default function WritingPage() {
@@ -16,17 +16,15 @@ export default function WritingPage() {
       <Nav />
       <main className="page-main">
         <header className="page-header">
-          <h1 className="page-title">写作</h1>
+          <h1 className="page-title">Writing</h1>
           <p className="page-desc">
-            关于 AI 产品、商业判断和系统思考的文章。
-            <br />
-            偶尔也用英文写。
+            Essays on AI products, business judgment, and systems thinking.
           </p>
         </header>
 
         {posts.length === 0 ? (
           <p style={{ color: "var(--muted)", fontFamily: "var(--font-mono)", fontSize: "13px" }}>
-            文章即将发布。
+            Essays coming soon.
           </p>
         ) : (
           <ul className="post-list">

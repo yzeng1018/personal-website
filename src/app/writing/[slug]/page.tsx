@@ -47,7 +47,7 @@ export default async function ArticlePage({ params }: Props) {
       <Nav />
       <main className="article-main">
         <Link href="/writing" className="back-link">
-          ← 写作
+          ← Writing
         </Link>
 
         <article>
@@ -72,7 +72,7 @@ export default async function ArticlePage({ params }: Props) {
         <footer className="article-footer">
           <hr className="footer-hr" />
           <Link href="/writing" className="back-link">
-            ← 所有文章
+            ← All writing
           </Link>
         </footer>
       </main>
